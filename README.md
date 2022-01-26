@@ -29,6 +29,19 @@
     - External Libraries: JDK와 외부 의존 라이브러리
 
 ## 용어
+- Framework
+  - 여러 프로젝트를 진행하다 보니 core biz logic을 제외한 다른 부분들을 반복적으로 구현하고 있다는 사실을 알겠되었다.
+  - 문제가 생겼을 때 같은 프레임웍을 쓰는 사람들로부터 도움을 쉽게 받을 수 있다.
+  - 하지만 틀에 갇혀 있어야 하며 그 틀을 배워야 한다.
+- Spring
+  - 여러 하위 프레임웍 프로젝트를 가진 복잡한 시스템이다.
+    - Spring Core: context, aspect
+    - Spring Data: persistence, ORM
+    - Spring MVC
+    - Spring Cloud
+    - Spring Boot: convention over configuration
+    - ...
+  - 이런 것들이 다 필요한가 -> 필요한 부분만 취하면 된다.
 - DI (Dependency Injection): 필요한 객체를 넘겨준다.
 - IoC (Inversion of Control): 애플리케이션이 아니라 프레임웍이 조종한다.
 
