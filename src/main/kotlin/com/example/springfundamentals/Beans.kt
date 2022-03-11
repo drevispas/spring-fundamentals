@@ -1,6 +1,7 @@
 package com.example.springfundamentals
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -84,5 +85,16 @@ class BikeOwnerInjectedByConstructor {
     //@Autowired // constructor에는 생략 가능
     constructor(bike: Bike){
         this.bike = bike
+    }
+}
+
+@Component
+class CarOwnerSelectedByQualifier(
+    val name: String = "carOwnerSelectedByQualifier",
+    @Qualifier("car2")
+    val car: Car
+) {
+    init {
+        println("CarOwnerSelectedByQualifier `$name` is created.")
     }
 }

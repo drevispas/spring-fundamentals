@@ -8,8 +8,8 @@ fun main() {
 //    componentAnnotation()
 //    registerBean()
 //    composeBean()
-    composeBeanWithAutowired()
-//    composeBeanWithQualified()
+//    composeBeanWithAutowired()
+    composeBeanWithQualified()
 }
 
 private fun configurationClass() {
@@ -63,4 +63,11 @@ fun composeBeanWithAutowired() {
 
     val bikeOwnerInjectedByConstructor = context.getBean(BikeOwnerInjectedByConstructor::class.java)
     println("${bikeOwnerInjectedByConstructor.name} owns a ${bikeOwnerInjectedByConstructor.bike.name}.")
+}
+
+fun composeBeanWithQualified() {
+    val context = AnnotationConfigApplicationContext(ComponentConfig::class.java)
+
+    val carOwnerSelectedByQualifier = context.getBean(CarOwnerSelectedByQualifier::class.java)
+    println("${carOwnerSelectedByQualifier.name} owns a ${carOwnerSelectedByQualifier.car.name}.")
 }
