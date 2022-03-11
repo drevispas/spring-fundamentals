@@ -13,6 +13,12 @@ data class Car(val name: String = "car") {
     }
 }
 
+data class CarOwner(val name: String = "carOwner", val car: Car) {
+    init {
+        println("CarOwner `$name` with `${car.name}` is created.")
+    }
+}
+
 @Configuration
 class BeanConfig {
     @Bean
@@ -31,6 +37,9 @@ class BeanConfig {
 
 //    @Bean
 //    fun hello() = "hello"
+
+    @Bean
+    fun carOwner1() = CarOwner("carOwner1", car1()) // car1() @Bean 함수 직접 호출
 }
 
 @Component // 스프링이 instance를 만들어 context에 추가

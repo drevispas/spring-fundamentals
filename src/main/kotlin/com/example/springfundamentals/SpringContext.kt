@@ -6,8 +6,8 @@ import java.util.function.Supplier
 fun main() {
 //    configurationClass()
 //    componentAnnotation()
-    registerBean()
-//    composeBean()
+//    registerBean()
+    composeBean()
 //    composeBeanWithAutowired()
 //    composeBeanWithQualified()
 }
@@ -37,10 +37,14 @@ private fun componentAnnotation() {
 private fun registerBean() {
     val context = AnnotationConfigApplicationContext(RegisterBeanConfig::class.java)
     val supplier: Supplier<Car> = Supplier { Car("car3") }
-    context.registerBean(
-        /* beanName = */ "car3",
-        /* beanClass = */ Car::class.java,
-        /* supplier = */ supplier)
+    context.registerBean("car3", Car::class.java, supplier)
     val car = context.getBean(Car::class.java)
     println(car)
+}
+
+fun composeBean() {
+    val context = AnnotationConfigApplicationContext(BeanConfig::class.java)
+
+    val carOwner1 = context.getBean(CarOwner::class.java)
+    println("${carOwner1.name} owns ${carOwner1.car.name}.")
 }
