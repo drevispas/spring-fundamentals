@@ -1,13 +1,13 @@
 # spring-fundamentals
 (1교시 시작)
-# **Prerequisites**
+# **1. Prerequisites**
 
-## Preparation
+## 1.1. Preparation
 - 컴퓨터 준비
     - Intellij Idea
     - JDK 11: https://www.azul.com/downloads/?package=jdk
 
-## 프로젝트 생성하기
+## 1.2. 프로젝트 생성하기
 - File > New > Project... > Spring Initializr
     - Name: demo
     - Language: Kotlin
@@ -28,7 +28,7 @@
     - gradle.build, pom.xml: 빌드 설정 파일
     - External Libraries: JDK와 외부 의존 라이브러리
 
-## 용어
+## 1.3. 용어
 - Framework
   - 여러 프로젝트를 진행하다 보니 core biz logic을 제외한 다른 부분들을 반복적으로 구현하고 있다는 사실을 알겠되었다.
   - 문제가 생겼을 때 같은 프레임웍을 쓰는 사람들로부터 도움을 쉽게 받을 수 있다.
@@ -45,19 +45,19 @@
 - DI (Dependency Injection): 필요한 객체를 넘겨준다.
 - IoC (Inversion of Control): 애플리케이션이 아니라 프레임웍이 조종한다.
 
-# **Application context**
+# **2. Application context**
 - 스프링이 관리할 모든 instance들을 모아 놓은 메모리 영역
 - 스프링은 context에 없는 객체들은 관리하지 못함
 - context에 저장되는 instance를 bean이라고 부름
 
-## Spring context에 bean 추가하기
+## 2.1. Spring context에 bean 추가하기
 
-### Bean 추가하는 방법들
+### 2.1.1. Bean 추가하는 방법들
 - @Bean
 - @Component, @Repository, @Service, @Controller
 - .registerBean()
 
-### context 의존성 추가하기
+### 2.1.2. context 의존성 추가하기
 - spring-context: context를 사용할 수 있게 해주는 외부 라이브러리
     - build.gradle.kts 열기
     - Intellij 하위 메뉴에서 Dependencies 열기
@@ -66,7 +66,7 @@
     - Load Gradle Changes 버튼 클릭
     - 외부 라이브러리를 빌드 설정에 추가하면 다운로드 받음
 
-### 데모용 class 작성
+### 2.1.2. 데모용 class 작성
 - Base package `com.example.springfundamentals`에 kotlin class `SpringContext` 추가
     ```kotlin
     fun main() {
@@ -81,7 +81,7 @@
     class Car(val name: String = "car")
     ```
 
-### @Bean으로 bean 추가하기
+### 2.1.3. @Bean으로 bean 추가하기
 - @Configuration: 일반 class를 설정 class로 만듦
 - @Bean 함수: context 초기화 때 실행시켜서 context에 추가시킴
     - 함수이름이 bean 이름이 되므로 보통 명사로 짓는다. 보통 bean class 이름과 동일하게 한다.
@@ -120,7 +120,9 @@
     - [ ] 같은 타입이 복수일 때 기본값
         - @Bean @Primary
 
-### @Component로 bean 추가하기
+(1교시 끝)
+
+### 2.1.4. @Component로 bean 추가하기
 - @Component: class에 표시하면 스프링이 생성해서 context에 추가해 줌
 - @Configuration @ComponentScan: 스프링한테 표시한 class들이 어디 있는지 알려 줌
 - `Beans`에 아래 추가
@@ -145,7 +147,7 @@
         - 조치: @Bean fun hello()를 주석으로 막을 것
 - boilerplate 코드가 적은 @Component 방식을 더욱 선호
 
-### @PostConstruct
+### 2.1.5. @PostConstruct
 - 스프링이 bean 생성 직후 실행할 것 정의
 - build.gradle.ktx: `javax.annotation:javax.annotation-api` 의존 추가
 - `Beans.Bike`를 수정
@@ -160,7 +162,7 @@
     }
     ```
 
-### .registerBean()으로 bean 추가하기
+### 2.1.6. .registerBean()으로 bean 추가하기
 - `Beans`에 추가
     ```kotlin
     @Configuration
@@ -176,19 +178,14 @@
         println(car.name)
     }
     ```
-
-(1교시 끝)
-
-(2교시 시작)
-
-## Bean 끼리 결합하기
+## 2.2. Bean 끼리 결합하기
 - Spring context에 있는 어떤 bean이 또 다른 bean을 사용할 수 있다.
 - 방법들
     - @Bean 함수 호출해서 결합하기
     - 함수 인자에 @Bean을 주입시키기
     - 객체 속성에 @Autowired 설정해서 주입시키기
 
-### @Bean 함수 호출해서 결합하기
+### 2.2.1. @Bean 함수 호출해서 결합하기
 - `Beans`에 수정 및 추가
   ```kotlin
     @Configuration
@@ -210,7 +207,7 @@
   ```
 - [ ] 문제: carOwner1()의 car2() 호출은 또 하나의 bean을 생성하는 것일까?
 
-### 함수 인자에 @Bean을 주입시키기
+### 2.2.2. 함수 인자에 @Bean을 주입시키기
 - 스프링이 context에 있는 bean을 꺼내서 인자값으로 넘겨준다 (inject).
 - `Beans`에 수정
   ```kotlin
@@ -224,7 +221,7 @@
   ```kotlin
   ```
 
-### 객체 속성에 @Autowired 설정해서 주입시키기
+### 2.2.3. 객체 속성에 @Autowired 설정해서 주입시키기
 - 스프링이 @Autwored로 표시된 클래스 속성에 bean을 주입시키게 한다.
 - 3가지 변형이 있다.
     - 필드에 직접 명시해서 주입
@@ -272,14 +269,14 @@
     - 현재는 거의 안 쓰인다.
     - 코틀린에서는 이 방식을 흉내내기가 어려워 데모는 스킵 (자바는 setter 함수 위에 @Autowired만 추가하면 됨)
 
-### Bean 연결시 고려사항
+### 2.2.4. Bean 연결시 고려사항
 - 만날 수 있는 오류들
     - Bean이 또 다른 bean을 필요로 하는데 context에 없는 경우
     - 참조하는 다른 bean 연결고리를 따라가다가 자기 자신을 만나는 경우
     - 동일한 타입의 bean들이 여러 개 발견되는 경우
         - @Component 클래스에 @Primary 부여하기
         - constructor 인자에 @Qualifier 부여하기
-- @Qaulified로 원하는 bean 주입시키기
+- @Qualifier 로 원하는 bean 주입시키기
     - `Beans`에 추가
       ```kotlin
       @Component
@@ -294,10 +291,12 @@
       }
       ```
     - 문제
-        - [ ] 위에서 `@Qualified`를 제거하면 출력 결과는 어떨까?
+        - [ ] 위에서 `@Qualifier`를 제거하면 출력 결과는 어떨까?
 
-(2교시 끝)
+## 2.3. Context와 추상화
+구현체들을 분리하기 위해서 추상화를 사용한다.
+클래스가 구현체 대신 인터페이스를 사용하면, 다른 구현체로 바뀌더라도 자기 코드를 수정할 필요가 없다.
 
-다음에 할 것들:
-- Bean scope
-- AOP
+## 다음에 할 것들:
+- [ ] Bean scope
+- [ ] AOP

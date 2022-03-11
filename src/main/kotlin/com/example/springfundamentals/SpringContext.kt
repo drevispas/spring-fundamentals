@@ -4,12 +4,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.function.Supplier
 
 fun main() {
-//    configurationClass()
+    configurationClass()
 //    componentAnnotation()
 //    registerBean()
 //    composeBean()
 //    composeBeanWithAutowired()
-    composeBeanWithQualified()
+//    composeBeanWithQualified()
 }
 
 fun composeBeanWithQualified() {
