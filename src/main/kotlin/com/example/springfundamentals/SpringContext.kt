@@ -1,11 +1,12 @@
 package com.example.springfundamentals
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
+import java.util.function.Supplier
 
 fun main() {
 //    configurationClass()
-    componentAnnotation()
-//    registerBean()
+//    componentAnnotation()
+    registerBean()
 //    composeBean()
 //    composeBeanWithAutowired()
 //    composeBeanWithQualified()
@@ -31,4 +32,15 @@ private fun componentAnnotation() {
     val context = AnnotationConfigApplicationContext(ComponentConfig::class.java)
     val bike = context.getBean(Bike::class.java)
     println(bike)
+}
+
+private fun registerBean() {
+    val context = AnnotationConfigApplicationContext(RegisterBeanConfig::class.java)
+    val supplier: Supplier<Car> = Supplier { Car("car3") }
+    context.registerBean(
+        /* beanName = */ "car3",
+        /* beanClass = */ Car::class.java,
+        /* supplier = */ supplier)
+    val car = context.getBean(Car::class.java)
+    println(car)
 }
