@@ -3,8 +3,8 @@ package com.example.springfundamentals
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 fun main() {
-    configurationClass()
-//    componentAnnotation()
+//    configurationClass()
+    componentAnnotation()
 //    registerBean()
 //    composeBean()
 //    composeBeanWithAutowired()
@@ -25,4 +25,10 @@ private fun configurationClass() {
 
     val hello = context.getBean(String::class.java)
     println(hello)
+}
+
+private fun componentAnnotation() {
+    val context = AnnotationConfigApplicationContext(ComponentConfig::class.java)
+    val bike = context.getBean(Bike::class.java)
+    println(bike)
 }
