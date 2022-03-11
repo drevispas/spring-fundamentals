@@ -15,6 +15,10 @@ class BeanConfig {
     fun car2(): Car {
         return Car("car2") // 스프링이 반환객체를 context에 추가
     }
+
     @Bean
     fun long() = 1L
+
+    @Bean
+    fun hello() = "hello"
 }
