@@ -14,6 +14,9 @@ fun main() {
 private fun configurationClass() {
     val context = AnnotationConfigApplicationContext(BeanConfig::class.java) // context 생성할 때 넘겨줄 수 있음
 
+    val car1 = context.getBean("car1", Car::class.java)
+    println(car1.name)
+
     val car2 = context.getBean("car2", Car::class.java)
     println(car2.name)
 
