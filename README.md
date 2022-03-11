@@ -200,6 +200,7 @@ Spring context에 선언이 아닌 프로그램으로 bean을 추가하는 방�
 ## 2.2. Bean 주입시키기
 - 객체들 간의 의존관계가 필요할 경우 context에 있는 bean을 가져와 사용할 수 있습니다.
 - UML 기준으로 dependency, association, aggregation, composition 관계를 맺을 때 사용할 수 있습니다.
+  ![Alt text](src/main/resources/static/uml-relationship.png?raw=true "Spring Triangle")
 - 방법들
     - @Configuration 이용해서 주입시키하기
     - 함수 인자에 @Bean을 주입시키기
@@ -376,6 +377,22 @@ Spring context에 선언이 아닌 프로그램으로 bean을 추가하는 방�
 
 ## 2.3. Bean과 Abstraction
 클래스는 이렇게 사용해라고 외부에 공개하여 약속한 클라이언트와의 계약이 있고, 그 계약을 정의해 놓은 것을 인터페이스라고 합시다. 계약과 구현물을 분리하기 위해서 추상화를 사용하게 됩니다. 클래스가 구현체 대신 인터페이스를 사용하면, 다른 구현체로 바뀌더라도 클라이언트 코드를 수정할 필요가 없는 장점이 있습니다.
+
+### 2.3.1. 객체의 설계
+- 명명 규칙: 이름을 잘 지어야 합니다. 유즈케이스를 처리하는 객체는 ~Service, DB 연결을 처리하는 객체는 ~Repository 등으로 이름 짓는 게 보통입니다.
+- 책임의 분리: 기본적으로 객체는 하나의 책임만을 갖도록 설계합니다. 책임이 둘일 경우 객체를 분리하여야 합니다. **Single Reponsibility Principle**
+- 변경에 저항: 일부 기능 변경 때문에 나까지 바뀌지 않게 설계합니다. 사용 기능을 인터페이스화 합니다. **Open-Closed Principle**
+- 상속에 주의: 부모 객체의 계약 사항을 행간까지 읽어야 합니다. 상속을 기피하는 것도 방법입니다. **Liscov Substitution Principle**
+- 계약의 유지: 계약에서 제공하는 기능이 적도록 설계합니다. 제공 기능이 많은 경우 인터페이스를 분리합니다. **Interface Segregation Principle**
+- 느슨한 결합: 추상에만 의존하도록 설계합니다. 구현체 말고 인터페이스로 변수를 선언합니다. **Dependency Inversion Principle**
+
+### 2.3.2. 순진하게 구현하기
+(그림은 https://alexnault.dev/dependency-inversion-principle-in-functional-typescript 에서 가져 옴)
+![Alt text](src/main/resources/static/traditional-dependency.svg?raw=true "Spring Triangle")
+
+
+### 2.3.3. 능숙하게 구현하기
+![Alt text](src/main/resources/static/dependency-inversion.svg?raw=true "Spring Triangle")
 
 ## 다음에 할 것들:
 - [ ] Bean scope
