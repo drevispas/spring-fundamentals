@@ -1,5 +1,6 @@
 package com.example.springfundamentals
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -62,3 +63,26 @@ class ComponentConfig // bean 생성 함수 필요없음
 
 @Configuration
 class RegisterBeanConfig
+
+@Component
+class BikeOwnerInjectedByAutowired {
+    val name: String = "bikeOwnerInjectedByAutowired"
+    init {
+        println("BikeOwnerInjectedByAutowired `$name` is created.")
+    }
+    @Autowired
+    lateinit var bike: Bike
+}
+
+@Component
+class BikeOwnerInjectedByConstructor {
+    val name: String = "bikeOwnerInjectedByConstructor"
+    init {
+        println("BikeOwnerInjectedByConstructor `$name` is created.")
+    }
+    val bike: Bike
+    //@Autowired // constructor에는 생략 가능
+    constructor(bike: Bike){
+        this.bike = bike
+    }
+}

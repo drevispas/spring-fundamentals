@@ -7,8 +7,8 @@ fun main() {
 //    configurationClass()
 //    componentAnnotation()
 //    registerBean()
-    composeBean()
-//    composeBeanWithAutowired()
+//    composeBean()
+    composeBeanWithAutowired()
 //    composeBeanWithQualified()
 }
 
@@ -53,4 +53,14 @@ fun composeBean() {
 
     val carOwner2 = context.getBean("carOwner2", CarOwner::class.java)
     println("${carOwner2.name} owns ${carOwner2.car.name}.")
+}
+
+fun composeBeanWithAutowired() {
+    val context = AnnotationConfigApplicationContext(ComponentConfig::class.java)
+
+    val bikeOwnerInjectedByAutowired = context.getBean(BikeOwnerInjectedByAutowired::class.java)
+    println("${bikeOwnerInjectedByAutowired.name} owns a ${bikeOwnerInjectedByAutowired.bike.name}.")
+
+    val bikeOwnerInjectedByConstructor = context.getBean(BikeOwnerInjectedByConstructor::class.java)
+    println("${bikeOwnerInjectedByConstructor.name} owns a ${bikeOwnerInjectedByConstructor.bike.name}.")
 }
