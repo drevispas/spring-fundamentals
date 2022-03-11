@@ -39,7 +39,11 @@ class BeanConfig {
 //    fun hello() = "hello"
 
     @Bean
+    @Primary
     fun carOwner1() = CarOwner("carOwner1", car1()) // car1() @Bean 함수 직접 호출
+
+    @Bean
+    fun carOwner2(car: Car) = CarOwner("carOwner2", car) // 인자 carOwner에 해당 하는 bean을 주입시켜준다.
 }
 
 @Component // 스프링이 instance를 만들어 context에 추가

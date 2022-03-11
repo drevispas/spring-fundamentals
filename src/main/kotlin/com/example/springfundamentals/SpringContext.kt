@@ -50,4 +50,7 @@ fun composeBean() {
 
     val carOwner1Again = context.getBean(CarOwner::class.java)
     println("${carOwner1.name} owns ${carOwner1.car.name}.")
+
+    val carOwner2 = context.getBean("carOwner2", CarOwner::class.java)
+    println("${carOwner2.name} owns ${carOwner2.car.name}.")
 }
