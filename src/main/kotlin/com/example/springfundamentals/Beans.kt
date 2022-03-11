@@ -2,6 +2,7 @@ package com.example.springfundamentals
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Primary
 
 class Car(val name: String = "car") {
     init {
@@ -12,6 +13,7 @@ class Car(val name: String = "car") {
 @Configuration
 class BeanConfig {
     @Bean
+    @Primary
     fun car1(): Car {
         return Car("car1") // 스프링이 반환객체를 context에 추가
     }
