@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Component
+import javax.annotation.PostConstruct
 
 data class Car(val name: String = "car") {
     init {
@@ -37,6 +38,9 @@ data class Bike(val name: String = "bike") {
     init {
         println("Bike `$name` is created.")
     }
+
+    @PostConstruct
+    fun post() = println("Right after Bike `$name` is created.")
 }
 
 @Configuration
