@@ -380,19 +380,26 @@ Spring context에 선언이 아닌 프로그램으로 bean을 추가하는 방�
 
 ### 2.3.1. 객체의 설계
 - 명명 규칙: 이름을 잘 지어야 합니다. 유즈케이스를 처리하는 객체는 ~Service, DB 연결을 처리하는 객체는 ~Repository 등으로 이름 짓는 게 보통입니다.
-- 책임의 분리: 기본적으로 객체는 하나의 책임만을 갖도록 설계합니다. 책임이 둘일 경우 객체를 분리하여야 합니다. **Single Reponsibility Principle**
-- 변경에 저항: 일부 기능 변경 때문에 나까지 바뀌지 않게 설계합니다. 사용 기능을 인터페이스화 합니다. **Open-Closed Principle**
-- 상속에 주의: 부모 객체의 계약 사항을 행간까지 읽어야 합니다. 상속을 기피하는 것도 방법입니다. **Liscov Substitution Principle**
-- 계약의 유지: 계약에서 제공하는 기능이 적도록 설계합니다. 제공 기능이 많은 경우 인터페이스를 분리합니다. **Interface Segregation Principle**
-- 느슨한 결합: 추상에만 의존하도록 설계합니다. 구현체 말고 인터페이스로 변수를 선언합니다. **Dependency Inversion Principle**
+- 책임의 분리: 기본적으로 객체는 하나의 책임만을 갖도록 설계합니다. 책임이 둘일 경우 객체를 분리하여야 합니다. (**Single Reponsibility Principle**)
+- 변경에 저항: 일부 기능 변경 때문에 나까지 바뀌지 않게 설계합니다. 사용 기능을 인터페이스화 합니다. (**Open-Closed Principle**)
+- 상속에 주의: 부모 객체의 계약 사항을 행간까지 읽어야 합니다. 상속을 기피하는 것도 방법입니다. (**Liscov Substitution Principle**)
+- 계약의 유지: 계약에서 제공하는 기능이 적도록 설계합니다. 제공 기능이 많은 경우 인터페이스를 분리합니다. (**Interface Segregation Principle**)
+- 느슨한 결합: 추상에만 의존하도록 설계합니다. 구현체 말고 인터페이스로 변수를 선언합니다. (**Dependency Inversion Principle**)
 
-### 2.3.2. 순진하게 구현하기
+(그림은 https://devopedia.org/solid-design-principles 에서 가져 옴)
+![Alt text](src/main/resources/static/solid-principles.png "Spring Triangle")
+
+TODO: 구현 추가
+
+### 2.3.2. Bean 사용해서 구현해보기 Version 1
 (그림은 https://alexnault.dev/dependency-inversion-principle-in-functional-typescript 에서 가져 옴)
-![Alt text](src/main/resources/static/traditional-dependency.svg?raw=true "Spring Triangle")
+![Alt text](src/main/resources/static/traditional-dependency.svg "Spring Triangle")
+
+TODO: 구현 추가
 
 
-### 2.3.3. 능숙하게 구현하기
-![Alt text](src/main/resources/static/dependency-inversion.svg?raw=true "Spring Triangle")
+### 2.3.3. Bean 사용해서 구현해보기 Version 2
+![Alt text](src/main/resources/static/dependency-inversion.svg "Spring Triangle")
 
 ## 다음에 할 것들:
 - [ ] Bean scope
