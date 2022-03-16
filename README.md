@@ -33,6 +33,13 @@
   - 여러 프로젝트를 진행하다 보니 core biz logic을 제외한 다른 부분들을 반복적으로 구현하고 있다는 사실을 알겠되었습니다.
   - 문제가 생겼을 때 같은 프레임웍을 쓰는 사람들로부터 도움을 쉽게 받을 수 있습니다.
   - 하지만 틀에 갇혀 있어야 하며 그 틀을 배워야 합니다.
+- Injection: 객체를 다른 객체로 연결시키는 일을 주입이라고 합니다.
+- DI (Dependency Injection)
+  - 객체가 직접 다른 객체를 연결시키는 것이 아니라 시스템이 대신 연결시켜 주는 것이 의존성 주입입니다.
+- IoC (Inversion of Control)
+  - 내 프로그램이 필요한 다른 기능을 호출하는 것이 아니라, 프레임웍이 호출권을 가져가서 내 프로그램 또는 라이브러리를 호출합니다.
+  - DI는 IoC를 구현하기 위한 패턴 중 일부입니다.
+  - IoC container는 IoC 구현체라고 대체로 받아들여집니다. 
 - Spring
   - 여러 하위 프레임웍 프로젝트를 가진 복잡한 시스템입니다.
     - Spring Core: context, aspect
@@ -42,14 +49,13 @@
     - Spring Boot: convention over configuration
     - ...
   - 이런 것들이 다 필요한가 -> 필요한 부분만 취하면 됩니다.
-- DI (Dependency Injection): 필요한 객체를 넘겨줍니다.
-- IoC (Inversion of Control): 애플리케이션이 아니라 프레임웍이 조종합니다.
-- 일명 스프링 트라이앵글:
-![Alt text](src/main/resources/static/spring-triangle.png?raw=true "Spring Triangle")
+  - 일명 스프링 트라이앵글:
+  ![Alt text](src/main/resources/static/spring-triangle.png?raw=true "Spring Triangle")
 
 
 # **2. Application context**
-- 스프링이 관리할 모든 instance들을 모아 놓은 메모리 영역
+- 스프링 프레임웍 (이하 스프링)이 구현한 IoC 컨테이너입니다.
+- 스프링이 관리할 모든 instance들을 모아 놓은 메모리 영역입니다.
 - 스프링은 context에 없는 객체들은 관리하지 못합니다.
 - context에 저장되는 instance를 bean이라고 부릅니다.
 
